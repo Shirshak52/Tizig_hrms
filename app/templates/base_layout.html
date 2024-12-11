@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tizig HR{% endblock %}</title>
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"> <!-- Bootstrap Icons -->
+    <style>
+    body {
+        padding: 5px 15px;
+    }
+    </style>
+</head>
+<body>
+    {% import 'macros.html' as macros %}
+
+    {% block navbar %}
+        {{ macros.navbar() }}
+    {% endblock %}
+
+    <!-- Main content container -->
+    <div class="container-fluid mt-5">
+        <!-- Tab navigation -->
+        {{ macros.tabs() }}
+
+        <!-- Tab content -->
+        <div class="tab-content mt-3">
+            <!-- Add Employee Tab -->
+            <div class="tab-pane fade show active" id="addEmployee" role="tabpanel" aria-labelledby="addEmployeeTab">
+                {% block add_employee_content %}{% endblock %}
+            </div>
+
+            <!-- View Employees Tab -->
+            <div class="tab-pane fade" id="viewEmployee" role="tabpanel" aria-labelledby="viewEmployeeTab">
+                {% block view_employee_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    {{ bootstrap.load_js() }}
+</body>
+</html>
