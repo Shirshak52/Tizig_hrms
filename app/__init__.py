@@ -8,7 +8,7 @@ from flask_admin import Admin
 # Initialize addon instances
 db = SQLAlchemy()
 migrate = Migrate()
-administrator = Admin(name='Tizig HR Admin')
+administrator = Admin(name='Tizig HR')
 
 def create_app():
     # print(f"SQLALCHEMY_DATABASE_URI: {Config.SQLALCHEMY_DATABASE_URI}")
