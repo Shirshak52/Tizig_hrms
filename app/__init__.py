@@ -25,7 +25,12 @@ def create_app():
 
     with app.app_context():
         # Import model classes for migration
+        from app.models.department_model import Department
+        from app.models.designation_model import Designation
+        from app.models.status_model import Status
         from app.models.employee_model import Employee
+        from app.models.salary_details_model import SalaryDetails
+        from app.models.employee_documents_model import EmployeeDocument
 
 
         # Setup model views
