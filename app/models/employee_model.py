@@ -16,13 +16,11 @@ class Employee(db.Model):
 
     # Relationships
     department_id = db.Column(db.Integer, db.ForeignKey('departments.id'), nullable=False)
-    designation_id = db.Column(db.Integer, db.ForeignKey('designations.id'), nullable=False)
-    status_id = db.Column(db.Integer, db.ForeignKey('statuses.id', use_alter=True), nullable=False)
-
-    # Relationship reference for easy querying
     department = db.relationship('Department', backref='employees')
-    designation = db.relationship('Designation', backref='employees')
-    status = db.relationship('Status', backref='employees')
+
+    # Relationship to SalaryHistory
+    salary_history = db.relationship('SalaryHistory', backref='employee', lazy='dynamic')
 
     def __repr__(self):
-        return f"<Employee {self.id}: {self.name}>"
+        return f"<Employee {self.id}: {self.first_name} {self.last_name}>"
+    

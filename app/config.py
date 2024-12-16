@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 # This code essentially loads the file 'tizig_hrms.env' for config values
 basedir = path.abspath(path.join(path.dirname(__file__), '..'))
 load_dotenv(path.join(basedir, '.env'))
-# print(f"Loading .env from: {path.join(basedir, '.env')}")
+print(f"Loading .env from: {path.join(basedir, '.env')}")
 
 
 
