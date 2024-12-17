@@ -112,3 +112,4 @@ Desktop.ini
 .DS_Store
 .AppleDouble
 .LSOverride
+script_for_fresh_migrations.sql

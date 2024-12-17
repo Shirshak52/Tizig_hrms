@@ -1,5 +1,7 @@
+from datetime import date
 from app import db
 from sqlalchemy.types import Enum
+from sqlalchemy.orm import validates
 
 class Employee(db.Model):
     __tablename__ = 'employees'
