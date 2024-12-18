@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS alembic_version;
+
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
