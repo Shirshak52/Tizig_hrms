@@ -16,12 +16,16 @@ class Employee(db.Model):
     emergency_contact = db.Column(db.String(15), nullable=False)
     address = db.Column(db.String(200), nullable=False)
 
-    # Relationships
+    # foreign keys
     department_id = db.Column(db.Integer, db.ForeignKey('departments.id'), nullable=False)
-    department = db.relationship('Department', backref='employees')
+    job_category_id = db.Column(db.Integer, db.ForeignKey('job_categories.id'), nullable=False)
 
-    # Relationship to SalaryHistory
-    salary_history = db.relationship('SalaryHistory', backref='employee', lazy='dynamic')
+    # Relationships
+    salary_histories = db.relationship('SalaryHistory', back_populates='employee', lazy='dynamic')
+    department = db.relationship('Department', back_populates='employees')
+    job_category = db.relationship('JobCategory', back_populates='employees')
+    employee_documents = db.relationship('EmployeeDocument', back_populates='employee')
+
 
     def __repr__(self):
         return f"<Employee {self.id}: {self.first_name} {self.last_name}>"

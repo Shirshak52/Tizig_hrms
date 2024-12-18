@@ -9,8 +9,9 @@ class EmployeeDocument(db.Model):
     file_path = db.Column(db.String(200), nullable=False)
     uploaded_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    # Relationship
-    employee = db.relationship('Employee', backref='documents')
+    # Relationships
+    employee = db.relationship('Employee', back_populates='employee_documents')
+
 
     def __repr__(self):
         return f"<Document {self.id} for Employee {self.employee_id}>"

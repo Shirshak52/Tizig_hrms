@@ -11,6 +11,7 @@ class SalaryHistory(db.Model):
     # Composite primary key
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'), primary_key=True, nullable=False)
     department_id = db.Column(db.Integer, db.ForeignKey('departments.id'), primary_key=True, nullable=False)
+    job_category_id = db.Column(db.Integer, db.ForeignKey('job_categories.id'), primary_key=True, nullable=False)
     designation_id = db.Column(db.Integer, db.ForeignKey('designations.id'), primary_key=True, nullable=False)
     status_id = db.Column(db.Integer, db.ForeignKey('statuses.id'), primary_key=True, nullable=False)
 
@@ -31,9 +32,11 @@ class SalaryHistory(db.Model):
     remarks = db.Column(db.String(100), nullable=True, unique=False)
 
     # Relationships
-    department = db.relationship('Department', backref='salary_history')
-    designation = db.relationship('Designation', backref='salary_history')
-    status = db.relationship('Status', backref='salary_history')
+    department = db.relationship('Department', back_populates='salary_histories')
+    job_category = db.relationship('JobCategory', back_populates='salary_histories')
+    designation = db.relationship('Designation', back_populates='salary_histories')
+    status = db.relationship('Status', back_populates='salary_histories')
+    employee = db.relationship('Employee', back_populates='salary_histories')
 
     def __repr__(self):
         return f"<SalaryHistory {self.id}: Employee {self.employee_id}, Status {self.status_id}>"

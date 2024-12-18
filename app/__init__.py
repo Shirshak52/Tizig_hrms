@@ -27,11 +27,10 @@ def create_app():
         from app.models.department_model import Department
         from app.models.designation_model import Designation
         from app.models.status_model import Status
+        from app.models.job_category_model import JobCategory
         from app.models.employee_model import Employee
         from app.models.employee_documents_model import EmployeeDocument
         from app.models.salary_history_model import SalaryHistory
-
-        # version_class(SalaryHistory)
 
         # Setup model views
         from flask_admin.contrib.sqla import ModelView
@@ -43,6 +42,7 @@ def create_app():
 
         administrator.add_view(EmployeeAdminView(Employee, db.session))  # Set up Employee CRUD views
         administrator.add_view(DepartmentAdminView(Department, db.session))  # Set up Department CRUD views
+        administrator.add_view(ModelView(JobCategory, db.session))  # Set up JobCategory CRUD views
         administrator.add_view(DesignationAdminView(Designation, db.session))  # Set up Designation CRUD views
         administrator.add_view(StatusAdminView(Status, db.session))  # Set up Status CRUD views
         administrator.add_view(SalaryHistoryAdminView(SalaryHistory, db.session))  # Set up SalaryHistory CRUD views
